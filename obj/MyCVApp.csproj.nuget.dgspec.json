@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lab_services_student\\source\\repos\\MyCVApp\\MyCVApp.csproj": {}
+    "C:\\Users\\lab_services_student\\Documents\\GitHub\\ICETASK1Prog7311_ST10443342\\MyCVApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lab_services_student\\source\\repos\\MyCVApp\\MyCVApp.csproj": {
+    "C:\\Users\\lab_services_student\\Documents\\GitHub\\ICETASK1Prog7311_ST10443342\\MyCVApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lab_services_student\\source\\repos\\MyCVApp\\MyCVApp.csproj",
+        "projectUniqueName": "C:\\Users\\lab_services_student\\Documents\\GitHub\\ICETASK1Prog7311_ST10443342\\MyCVApp.csproj",
         "projectName": "MyCVApp",
-        "projectPath": "C:\\Users\\lab_services_student\\source\\repos\\MyCVApp\\MyCVApp.csproj",
+        "projectPath": "C:\\Users\\lab_services_student\\Documents\\GitHub\\ICETASK1Prog7311_ST10443342\\MyCVApp.csproj",
         "packagesPath": "C:\\Users\\lab_services_student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lab_services_student\\source\\repos\\MyCVApp\\obj\\",
+        "outputPath": "C:\\Users\\lab_services_student\\Documents\\GitHub\\ICETASK1Prog7311_ST10443342\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -68,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
