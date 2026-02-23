@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyCVApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff1af52e2a24e8990ee5abceeedee7fa4df2e0de")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7220d15a34cfe4aa592091eafda386772a1aef2b")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyCVApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyCVApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

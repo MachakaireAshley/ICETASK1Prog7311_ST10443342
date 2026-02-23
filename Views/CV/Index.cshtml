@@ -1,7 +1,7 @@
 ﻿@model MyCVApp.ViewModels.CVViewModel
 
 @{
-    ViewData["Title"] = "My CV";
+    ViewData["Title"] = "Ashley Machakaire - Fintech Developer Portfolio";
 }
 
 <!DOCTYPE html>
@@ -9,154 +9,572 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <!-- ATS-friendly fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
     <style>
-        .cv-section {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background-color: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header/Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-content {
+            flex: 2;
+        }
+
+        .hero-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title {
+            font-size: 1.25rem;
+            color: #2563eb;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-tagline {
+            font-size: 1rem;
+            color: #475569;
+            margin-bottom: 1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+            .contact-links a {
+                color: #475569;
+                text-decoration: none;
+                font-size: 0.95rem;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+                .contact-links a:hover {
+                    color: #2563eb;
+                }
+
+        .hero-avatar {
+            flex: 1;
+            text-align: center;
+        }
+
+        .avatar-circle {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: 600;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Section Styles - ATS-friendly headings */
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
             margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .section-title {
-            border-bottom: 2px solid #0d6efd;
-            padding-bottom: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f172a;
             margin-bottom: 1.5rem;
-            color: #0d6efd;
-        }
-
-        .contact-info i {
-            width: 25px;
-            color: #0d6efd;
-        }
-
-        .skill-badge {
-            background-color: #e7f1ff;
-            color: #0d6efd;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            margin: 0.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #2563eb;
             display: inline-block;
         }
 
+        /* About Section */
+        .about-text {
+            font-size: 1rem;
+            color: #334155;
+            max-width: 800px;
+        }
+
+        /* Skills Section - No rating bars (ATS-friendly) */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #eef2ff;
+            color: #2563eb;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+            .project-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.75rem 0;
+        }
+
+        .tech-badge {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+            .project-links a {
+                color: #2563eb;
+                text-decoration: none;
+                font-size: 0.9rem;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.25rem;
+            }
+
+                .project-links a:hover {
+                    text-decoration: underline;
+                }
+
+        .feature-list {
+            margin: 0.75rem 0;
+            padding-left: 1.25rem;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+            .feature-list li {
+                margin-bottom: 0.25rem;
+            }
+
+        /* Timeline for Experience/Education */
         .timeline-item {
             margin-bottom: 1.5rem;
         }
 
+            .timeline-item h4 {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: #0f172a;
+                margin-bottom: 0.25rem;
+            }
+
+        .timeline-subtitle {
+            font-weight: 500;
+            color: #2563eb;
+            margin-bottom: 0.25rem;
+        }
+
         .timeline-date {
-            font-weight: bold;
-            color: #6c757d;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
 
         .responsibility-list {
-            list-style-type: none;
-            padding-left: 0;
+            list-style-type: disc;
+            padding-left: 1.25rem;
+            color: #475569;
         }
 
-            .responsibility-list li {
-                margin-bottom: 0.5rem;
-                padding-left: 1.5rem;
-                position: relative;
+        /* Two-column layout for certain sections */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Certification cards */
+        .cert-card {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .cert-title {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .cert-issuer {
+            color: #2563eb;
+            font-size: 0.9rem;
+        }
+
+        .cert-date {
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        /* Activities */
+        .activity-item {
+            margin-bottom: 1rem;
+        }
+
+        .activity-name {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .activity-detail {
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        /* PDF Download Button */
+        .pdf-button {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: background 0.2s;
+        }
+
+            .pdf-button:hover {
+                background: #1e40af;
+                color: white;
             }
 
-                .responsibility-list li:before {
-                    content: "•";
-                    color: #0d6efd;
-                    font-weight: bold;
-                    position: absolute;
-                    left: 0;
-                }
+            .pdf-button i {
+                margin-right: 0.5rem;
+            }
 
-        .profile-header {
-            background-color: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #64748b;
+            font-size: 0.9rem;
         }
 
-        .proficiency-bar {
-            height: 8px;
-            background-color: #e9ecef;
-            border-radius: 4px;
-            margin-top: 5px;
-        }
+        /* Mobile responsive */
+        @@media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
 
-        .proficiency-fill {
-            height: 100%;
-            background-color: #0d6efd;
-            border-radius: 4px;
-        }
+            .contact-links {
+                justify-content: center;
+            }
 
-        .activity-item {
-            background-color: #f8f9fa;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container my-5">
-        <!-- Profile Header -->
-        <div class="profile-header">
-            <div class="row">
-                <div class="col-md-8">
-                    <h1 class="display-4">@Model.PersonalInfo.FullName</h1>
-                    <h3 class="text-primary">@Model.PersonalInfo.ProfessionalTitle</h3>
-                    <p class="lead mt-3">@Model.PersonalInfo.Summary</p>
+    <div class="container">
+        <!-- PDF Download Button -->
+        <a href="https://flowcv.com/resume/ashley-machakaire/download"
+           target="_blank"
+           class="download-btn"
+           style="background-color: #2563eb; color: white; padding: 12px 30px; border-radius: 6px; text-decoration: none; font-weight: 600; display: inline-block; margin: 10px; border: none; cursor: pointer;">
+            <i class="fas fa-download" style="margin-right: 8px;"></i> Download PDF CV
+        </a>
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="hero-name">@Model.PersonalInfo.FullName</h1>
+                <div class="hero-title">@Model.PersonalInfo.ProfessionalTitle</div>
+                <div class="hero-tagline">@Model.PersonalInfo.Tagline</div>
+
+                <div class="contact-links">
+                    <a href="mailto:@Model.PersonalInfo.Email">
+                        <i class="fas fa-envelope"></i> @Model.PersonalInfo.Email
+                    </a>
+                    <a href="tel:@Model.PersonalInfo.PhoneNumber">
+                        <i class="fas fa-phone"></i> @Model.PersonalInfo.PhoneNumber
+                    </a>
+                    <a href="@Model.PersonalInfo.LinkedInUrl" target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="@Model.PersonalInfo.GitHubUrl" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <span>
+                        <i class="fas fa-map-marker-alt"></i> @Model.PersonalInfo.Location
+                    </span>
                 </div>
-                <div class="col-md-4 contact-info">
-                    <p><i class="fas fa-phone"></i> @Model.PersonalInfo.PhoneNumber1</p>
-                    <p><i class="fas fa-phone"></i> @Model.PersonalInfo.PhoneNumber2</p>
-                    <p><i class="fas fa-envelope"></i> @Model.PersonalInfo.Email</p>
-                    <p><i class="fas fa-map-marker-alt"></i> @Model.PersonalInfo.Address</p>
-                    <p><i class="fab fa-linkedin"></i> <a href="@Model.PersonalInfo.LinkedInUrl" target="_blank">LinkedIn Profile</a></p>
+            </div>
+            <div class="hero-avatar">
+                <div class="avatar-circle">
+                    @Model.PersonalInfo.FullName.Split(' ').First()[0]@Model.PersonalInfo.FullName.Split(' ').Last()[0]
                 </div>
             </div>
         </div>
 
-        <!-- Education Section -->
-        <section class="cv-section">
-            <h2 class="section-title"><i class="fas fa-graduation-cap me-2"></i>Education</h2>
-            @foreach (var edu in Model.EducationList)
-            {
-                <div class="timeline-item">
-                    <h4>@edu.Degree</h4>
-                    <h5 class="text-primary">@edu.Institution, @edu.Location</h5>
-                    <p class="timeline-date">
-                        @edu.StartDate.ToString("MMM yyyy") -
-                        @if (edu.IsCurrent)
-                        {
-                            @:Present
-                        }
-                        else
-                        {
-                            @edu.EndDate.ToString("MMM yyyy")
-                        }
-                    </p>
-                    @if (!string.IsNullOrEmpty(edu.Description))
-                    {
-                        <p>@edu.Description</p>
-                    }
-                </div>
-            }
+        <!-- About Me Section -->
+        <section>
+            <h2 class="section-title">About Me</h2>
+            <div class="about-text">
+                <p>@Model.PersonalInfo.AboutMe</p>
+            </div>
         </section>
 
-        <!-- Experience Section -->
-        <section class="cv-section">
-            <h2 class="section-title"><i class="fas fa-briefcase me-2"></i>Experience</h2>
+        <!-- Skills Section - ATS-friendly -->
+        <section>
+            <h2 class="section-title">Skills</h2>
 
-            <!-- Internships -->
-            @if (Model.Internships.Any())
-            {
-                <h4 class="mt-3">Internships</h4>
-                foreach (var exp in Model.Internships)
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-items">
+                        @foreach (var skill in Model.TechnicalSkills.Where(s => s.Name.Contains("C#") || s.Name.Contains("Java") || s.Name.Contains("SQL") || s.Name.Contains("HTML") || s.Name.Contains("Python") || s.Name.Contains("JavaScript")))
+                        {
+                            <span class="skill-tag">@skill.Name</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Frameworks & Tools</h3>
+                    <div class="skill-items">
+                        @foreach (var skill in Model.TechnicalSkills.Where(s => s.Name.Contains("ASP.NET") || s.Name.Contains("Git") || s.Name.Contains("Microsoft")))
+                        {
+                            <span class="skill-tag">@skill.Name</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Fintech-Relevant Skills</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Financial Data Analysis</span>
+                        <span class="skill-tag">Secure Coding</span>
+                        <span class="skill-tag">Database Design</span>
+                        <span class="skill-tag">Transaction Processing</span>
+                        @foreach (var skill in Model.FintechSkills)
+                        {
+                            <span class="skill-tag">@skill.Name</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-items">
+                        @foreach (var skill in Model.SoftSkills)
+                        {
+                            <span class="skill-tag">@skill.Name</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skill-items">
+                        @foreach (var skill in Model.LanguageSkills)
+                        {
+                            <span class="skill-tag">@skill.Name</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section - With GitHub Links -->
+        <section>
+            <h2 class="section-title">Fintech Projects</h2>
+
+            <div class="projects-grid">
+                @foreach (var project in Model.FintechProjects)
+                {
+                    <div class="project-card">
+                        <h3 class="project-title">@project.Title</h3>
+                        <p>@project.Description</p>
+
+                        <div class="project-tech">
+                            @foreach (var tech in project.TechStack.Split(", "))
+                            {
+                                <span class="tech-badge">@tech</span>
+                            }
+                        </div>
+
+                        @if (project.KeyFeatures.Any())
+                        {
+                            <ul class="feature-list">
+                                @foreach (var feature in project.KeyFeatures)
+                                {
+                                    <li>@feature</li>
+                                }
+                            </ul>
+                        }
+
+                        <div class="project-links">
+                            @if (!string.IsNullOrEmpty(project.GitHubUrl))
+                            {
+                                <a href="@project.GitHubUrl" target="_blank">
+                                    <i class="fab fa-github"></i> GitHub Repo
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(project.LiveDemoUrl))
+                            {
+                                <a href="@project.LiveDemoUrl" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+
+        <!-- Education & Experience - Two Column Layout -->
+        <div class="two-column">
+            <!-- Education Column -->
+            <section>
+                <h2 class="section-title">Education</h2>
+
+                @foreach (var edu in Model.EducationList)
+                {
+                    <div class="timeline-item">
+                        <h4>@edu.Degree</h4>
+                        <div class="timeline-subtitle">@edu.Institution, @edu.Location</div>
+                        <div class="timeline-date">
+                            @edu.StartDate.ToString("yyyy") -
+                            @if (edu.IsCurrent)
+                            {
+                                <span>Present</span>
+                            }
+                            else
+                            {
+                                @edu.EndDate.ToString("yyyy")
+                            }
+                        </div>
+                        @if (!string.IsNullOrEmpty(edu.Description))
+                        {
+                            <p class="mb-2">@edu.Description</p>
+                        }
+                    </div>
+                }
+            </section>
+
+            <!-- Experience Column -->
+            <section>
+                <h2 class="section-title">Experience</h2>
+
+                @foreach (var exp in Model.ExperienceList.OrderByDescending(e => e.EndDate))
                 {
                     <div class="timeline-item">
                         <h4>@exp.JobTitle</h4>
-                        <h5 class="text-primary">@exp.Company, @exp.Location</h5>
-                        <p class="timeline-date">
-                            @exp.StartDate.ToString("MMM yyyy") - @exp.EndDate.ToString("MMM yyyy")
-                        </p>
+                        <div class="timeline-subtitle">@exp.Company, @exp.Location</div>
+                        <div class="timeline-date">
+                            @exp.StartDate.ToString("MMM yyyy") -
+                            @if (exp.IsCurrent)
+                            {
+                                <span>Present</span>
+                            }
+                            else
+                            {
+                                @exp.EndDate.ToString("MMM yyyy")
+                            }
+                        </div>
                         <ul class="responsibility-list">
                             @foreach (var resp in exp.Responsibilities)
                             {
@@ -165,101 +583,49 @@
                         </ul>
                     </div>
                 }
-            }
+            </section>
+        </div>
 
-            <!-- Volunteer Work -->
-            @if (Model.VolunteerWork.Any())
-            {
-                <h4 class="mt-4">Volunteer Experience</h4>
-                foreach (var exp in Model.VolunteerWork)
+        <!-- Activities & Leadership -->
+        <section>
+            <h2 class="section-title">Activities & Leadership</h2>
+
+            <div class="two-column">
+                @foreach (var activity in Model.Activities.OrderByDescending(a => a.StartDate))
                 {
-                    <div class="timeline-item">
-                        <h4>@exp.JobTitle</h4>
-                        <h5 class="text-primary">@exp.Company, @exp.Location</h5>
-                        <p class="timeline-date">
-                            @exp.StartDate.ToString("MMM yyyy") - @exp.EndDate.ToString("MMM yyyy")
-                        </p>
-                        <ul class="responsibility-list">
-                            @foreach (var resp in exp.Responsibilities)
-                            {
-                                <li>@resp</li>
-                            }
-                        </ul>
-                    </div>
-                }
-            }
-        </section>
-
-        <!-- Skills Section -->
-        <section class="cv-section">
-            <h2 class="section-title"><i class="fas fa-code me-2"></i>Skills</h2>
-
-            <div class="row">
-                <!-- Technical Skills -->
-                <div class="col-md-6">
-                    <h5>Technical Skills</h5>
-                    @foreach (var skill in Model.TechnicalSkills)
-                    {
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between">
-                                <span>@skill.Name</span>
-                                <span>@skill.ProficiencyLevel/5</span>
+                    <div class="activity-item">
+                        <span class="activity-name">@activity.Name</span>
+                        <span class="activity-detail"> — @activity.Role, @activity.Institution</span>
+                        @if (activity.StartDate.HasValue)
+                        {
+                            <div class="activity-detail">
+                                @activity.StartDate.Value.Year -
+                                @(activity.EndDate?.Year.ToString() ?? "Present")
                             </div>
-                            <div class="proficiency-bar">
-                                <div class="proficiency-fill" style="width: @(skill.ProficiencyLevel * 20)%;"></div>
-                            </div>
-                        </div>
-                    }
-                </div>
-
-                <!-- Languages -->
-                <div class="col-md-3">
-                    <h5>Languages</h5>
-                    @foreach (var skill in Model.LanguageSkills)
-                    {
-                        <div class="mb-2">
-                            <strong>@skill.Name</strong>
-                            <div class="proficiency-bar">
-                                <div class="proficiency-fill" style="width: @(skill.ProficiencyLevel * 20)%;"></div>
-                            </div>
-                        </div>
-                    }
-                </div>
-
-                <!-- Soft Skills -->
-                <div class="col-md-3">
-                    <h5>Soft Skills</h5>
-                    @foreach (var skill in Model.SoftSkills)
-                    {
-                        <span class="skill-badge">@skill.Name</span>
-                    }
-                </div>
-            </div>
-        </section>
-
-        <!-- Activities & Achievements -->
-        <section class="cv-section">
-            <h2 class="section-title"><i class="fas fa-trophy me-2"></i>Activities & Achievements</h2>
-
-            <div class="row">
-                @foreach (var activity in Model.Activities)
-                {
-                    <div class="col-md-6">
-                        <div class="activity-item">
-                            <h5>@activity.Name</h5>
-                            <p class="mb-1"><strong>@activity.Role</strong> - @activity.Institution</p>
-                            @if (activity.StartDate.HasValue)
-                            {
-                                <p class="text-muted">
-                                    @activity.StartDate.Value.Year -
-                                    @(activity.EndDate.HasValue? activity.EndDate.Value.Year.ToString() : "Present")
-                                </p>
-                            }
-                        </div>
+                        }
                     </div>
                 }
             </div>
         </section>
+
+        <!-- Interests (Bonus Section) -->
+        <section>
+            <h2 class="section-title">Interests</h2>
+            <div class="skill-items">
+                <span class="skill-tag">Fintech Innovation</span>
+                <span class="skill-tag">Digital Banking</span>
+                <span class="skill-tag">Reading</span>
+                <span class="skill-tag">Photography</span>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2025 Ashley Machakaire. Built with ASP.NET MVC · Hosted on [Your Hosting Platform]</p>
+            <p class="mt-2">
+                <small>This site is ATS-friendly and mobile-responsive.</small>
+            </p>
+        </div>
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
